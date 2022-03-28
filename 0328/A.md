@@ -34,5 +34,23 @@ var addToArrayForm = function (num, k) {
 ### 问题二答案
 
 ```javascript
+function curry(func) {
+  //此处补全
+  return function curriedFn(...args) {
+    if(args.length === func.length){
+      return func(...args);
+    }
+    return function(){
+      return curriedFn(...args.concat(Array.from(arguments)));
+    }
+  };
+}
+function sum(a, b, c) {
+  return a + b + c;
+}
 
+let curriedSum = curry(sum);
+alert(curriedSum(1, 2, 3)); // 6, still callable normally
+alert(curriedSum(1)(2, 3)); // 6, currying of 1st arg
+alert(curriedSum(1)(2)(3)); // 6, full currying
 ```
