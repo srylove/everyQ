@@ -38,7 +38,6 @@ function symbolPolyfill(val) {
     toString: function () {
       return "Symbol(" + this.description + ")";
     },
-    
   });
 
   Object.defineProperty(symbol, "description", {
